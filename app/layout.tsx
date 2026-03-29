@@ -71,6 +71,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="dns-prefetch" href="https://newsapi.org" />
+        <link rel="dns-prefetch" href="https://api-inference.huggingface.co" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         <link rel="alternate" type="application/rss+xml" title="ConflictBrief AI RSS Feed" href="/feed.xml" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563EB" />
