@@ -37,6 +37,19 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "ConflictBrief AI",
+              url: "https://conflictbrief-ai.vercel.app",
+              description:
+                "AI-powered one-sentence summaries of today's war and conflict news from Reuters, AP, BBC, and Al Jazeera.",
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-[#FAFAF8] text-[#1A1A1A] font-sans">
         {children}
