@@ -32,7 +32,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: "https://conflictbrief-ai.vercel.app" },
   category: "News & Media Tool",
-  verification: {},
+  verification: {
+    google: "WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc",
+  },
 };
 
 export default function RootLayout({
