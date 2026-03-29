@@ -1,0 +1,14 @@
+[
+  { "id": 1, "title": "Project Scaffold", "status": "in-progress", "milestone": true },
+  { "id": 2, "title": "GitHub Repo & CI Setup", "status": "pending", "milestone": true },
+  { "id": 3, "title": "Core Layout & Responsive Shell", "status": "pending", "milestone": false },
+  { "id": 4, "title": "NewsAPI Integration", "status": "pending", "milestone": true },
+  { "id": 5, "title": "AI Summarization Pipeline", "status": "pending", "milestone": true },
+  { "id": 6, "title": "News Dashboard UI", "status": "pending", "milestone": false },
+  { "id": 7, "title": "Visitor Counter", "status": "pending", "milestone": false },
+  { "id": 8, "title": "Google Sheets Data Collection", "status": "pending", "milestone": true },
+  { "id": 9, "title": "Adsterra Ad Integration", "status": "pending", "milestone": true },
+  { "id": 10, "title": "SEO Optimization", "status": "pending", "milestone": false },
+  { "id": 11, "title": "Vercel Deployment", "status": "pending", "milestone": true },
+  { "id": 12, "title": "Final QA & Polish", "status": "pending", "milestone": true }
+]
