@@ -11,7 +11,7 @@ export default function Header() {
             Conflict<span className="text-[#2563EB]">Brief</span> AI
           </span>
         </Link>
-        <nav className="flex items-center gap-4 text-sm font-medium text-[#6B7280]">
+        <nav aria-label="Main navigation" className="flex items-center gap-4 text-sm font-medium text-[#6B7280]">
           <Link href="/" className="transition-colors hover:text-[#1A1A1A]">
             Dashboard
           </Link>

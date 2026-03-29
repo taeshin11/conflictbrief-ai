@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://conflictbrief-ai.vercel.app"),
   title: "ConflictBrief AI — Daily War News Summary & Conflict Updates",
   description:
     "Get AI-powered one-sentence summaries of today's war and conflict news from Reuters, AP, BBC, and Al Jazeera. Updated every 30 minutes.",
@@ -53,6 +54,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#FAFAF8] text-[#1A1A1A] font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded-md focus:bg-[#2563EB] focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>
