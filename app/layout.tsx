@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import FeedbackWidget from "@/components/FeedbackWidget";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,8 +27,12 @@ export const metadata: Metadata = {
     description:
       "AI-powered one-sentence summaries of today's war and conflict news.",
   },
+  keywords:
+    "war news, conflict news, military news, AI news summary, war updates, conflict tracker, geopolitical news, Ukraine war, Middle East conflict, Sudan crisis",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://conflictbrief-ai.vercel.app" },
+  category: "News & Media Tool",
+  verification: {},
 };
 
 export default function RootLayout({
@@ -61,6 +66,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <FeedbackWidget />
       </body>
     </html>
   );
