@@ -1,0 +1,25 @@
+{
+  "name": "ConflictBrief AI — Daily War News Summary",
+  "short_name": "ConflictBrief",
+  "description": "AI-powered one-sentence summaries of today's war and conflict news from Reuters, AP, BBC, and Al Jazeera.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#2563EB",
+  "orientation": "portrait-primary",
+  "categories": ["news", "politics"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

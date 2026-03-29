@@ -18,11 +18,59 @@ export const metadata: Metadata = {
   },
 };
 
+const faqItems = [
+  {
+    question: "How often is the news updated?",
+    answer: "ConflictBrief AI refreshes its news feed every 30 minutes. Each time you visit the dashboard, you see the most recent batch of articles from our source wire services. If the news API is temporarily unavailable, the system serves the most recent cached version.",
+  },
+  {
+    question: "Which news sources does ConflictBrief AI use?",
+    answer: "We exclusively aggregate articles from four of the world's most trusted wire services: Reuters, Associated Press (AP), BBC News, and Al Jazeera English. These sources are chosen for their editorial independence and rigorous fact-checking standards.",
+  },
+  {
+    question: "How does the AI summarization work?",
+    answer: "Each article's title and description are processed through Facebook's BART-Large-CNN model, a transformer-based neural network trained for news summarization. The AI generates a single sentence of no more than 150 characters. If the primary model is unavailable, we fall back to Meta's LLaMA 3.1 model via Groq.",
+  },
+  {
+    question: "Is ConflictBrief AI free to use?",
+    answer: "Yes, ConflictBrief AI is completely free. There is no subscription fee, no premium tier, and no login required. The service is sustained through non-intrusive advertising partnerships.",
+  },
+  {
+    question: "Can I trust the accuracy of the AI summaries?",
+    answer: "Our AI summaries are generated directly from the source article text and are designed to be factually faithful. However, AI summarization is not perfect. Every summary card includes a direct link to the original article so you can verify facts and read the full context.",
+  },
+  {
+    question: "What conflict regions are covered?",
+    answer: "ConflictBrief AI covers all major active conflict zones worldwide including Ukraine, Middle East (Gaza, Israel, Yemen, Lebanon, Iran), Sudan (Khartoum, Darfur), Myanmar, Sahel, Ethiopia, and Congo.",
+  },
+  {
+    question: "How can I provide feedback or suggest improvements?",
+    answer: "You can reach us directly at taeshinkim11@gmail.com. Whether you have a feature request, found a bug, or want to suggest a new conflict region, we read every message and typically respond within 48 hours.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function HowToUsePage() {
   return (
     <>
       <Header />
       <main id="main-content" className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
         <article className="prose prose-lg max-w-none">
           <h1 className="text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
             How to Use ConflictBrief AI

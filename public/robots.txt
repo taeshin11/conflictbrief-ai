@@ -2,3 +2,13 @@ User-agent: *
 Allow: /
 
 Sitemap: https://conflictbrief-ai.vercel.app/sitemap.xml
+
+# Allow important content paths
+Allow: /about
+Allow: /how-to-use
+Allow: /feed.xml
+Allow: /api/news
+
+# Block internal API routes
+Disallow: /api/collect
+Disallow: /api/visitor

@@ -26,14 +26,39 @@ export const metadata: Metadata = {
     title: "ConflictBrief AI — Daily War News Summary",
     description:
       "AI-powered one-sentence summaries of today's war and conflict news.",
+    creator: "@ConflictBrief",
   },
   keywords:
-    "war news, conflict news, military news, AI news summary, war updates, conflict tracker, geopolitical news, Ukraine war, Middle East conflict, Sudan crisis",
-  robots: { index: true, follow: true },
-  alternates: { canonical: "https://conflictbrief-ai.vercel.app" },
+    "war news, conflict news, military news, AI news summary, war updates, conflict tracker, geopolitical news, Ukraine war, Middle East conflict, Sudan crisis, breaking war news, daily conflict briefing, real-time war updates, news aggregator, conflict monitor",
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large" as const,
+    "max-snippet": -1,
+    "max-video-preview": -1,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://conflictbrief-ai.vercel.app",
+    types: {
+      "application/rss+xml": "https://conflictbrief-ai.vercel.app/feed.xml",
+    },
+  },
   category: "News & Media Tool",
+  manifest: "/manifest.json",
   verification: {
     google: "WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc",
+  },
+  other: {
+    "google-news-tags": "war, conflict, military, geopolitics",
+    "news_keywords": "war, conflict, military, Ukraine, Middle East, Sudan, ceasefire, troops",
+    "article:section": "World News",
   },
 };
 
@@ -46,6 +71,13 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="alternate" type="application/rss+xml" title="ConflictBrief AI RSS Feed" href="/feed.xml" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563EB" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="ConflictBrief" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021"
@@ -54,14 +86,38 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "ConflictBrief AI",
-              url: "https://conflictbrief-ai.vercel.app",
-              description:
-                "AI-powered one-sentence summaries of today's war and conflict news from Reuters, AP, BBC, and Al Jazeera.",
-            }),
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "ConflictBrief AI",
+                url: "https://conflictbrief-ai.vercel.app",
+                description:
+                  "AI-powered one-sentence summaries of today's war and conflict news from Reuters, AP, BBC, and Al Jazeera.",
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: "https://conflictbrief-ai.vercel.app/?q={search_term_string}",
+                  },
+                  "query-input": "required name=search_term_string",
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "ConflictBrief AI",
+                url: "https://conflictbrief-ai.vercel.app",
+                logo: "https://conflictbrief-ai.vercel.app/icon-512.png",
+                description: "Free AI-powered war and conflict news aggregator.",
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  email: "taeshinkim11@gmail.com",
+                  contactType: "customer support",
+                },
+                sameAs: [],
+              },
+            ]),
           }}
         />
       </head>

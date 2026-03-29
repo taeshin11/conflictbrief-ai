@@ -1,3 +1,5 @@
+import ShareButtons from "./ShareButtons";
+
 interface Article {
   id: string;
   title: string;
@@ -57,14 +59,17 @@ export default function NewsCard({ article }: { article: Article }) {
           </div>
         </div>
       </div>
-      <a
-        href={article.originalUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 inline-block text-sm font-medium text-[#2563EB] transition-colors hover:text-[#1D4ED8]"
-      >
-        Read Full Article &rarr;
-      </a>
+      <div className="mt-4 flex items-center justify-between gap-4">
+        <a
+          href={article.originalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-[#2563EB] transition-colors hover:text-[#1D4ED8]"
+        >
+          Read Full Article &rarr;
+        </a>
+        <ShareButtons url={article.originalUrl} title={article.title} summary={article.summary} />
+      </div>
     </article>
   );
 }

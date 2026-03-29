@@ -61,14 +61,14 @@ export default function OGImage() {
         </div>
         <div
           style={{
-            fontSize: 28,
+            fontSize: 26,
             color: "#6B7280",
             maxWidth: 700,
             textAlign: "center",
             lineHeight: 1.5,
           }}
         >
-          AI-powered one-sentence summaries of today&apos;s war and conflict news
+          AI-powered war &amp; conflict news summaries — updated every 30 minutes
         </div>
         <div
           style={{
