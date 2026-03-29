@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import "./globals.css";
 
@@ -69,6 +70,12 @@ export default function RootLayout({
         </a>
         {children}
         <FeedbackWidget />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
