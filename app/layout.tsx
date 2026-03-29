@@ -26,6 +26,7 @@ export const metadata: Metadata = {
       "AI-powered one-sentence summaries of today's war and conflict news.",
   },
   robots: { index: true, follow: true },
+  alternates: { canonical: "https://conflictbrief-ai.vercel.app" },
 };
 
 export default function RootLayout({

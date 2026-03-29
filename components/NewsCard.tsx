@@ -18,8 +18,22 @@ function timeAgo(dateStr: string): string {
 }
 
 export default function NewsCard({ article }: { article: Article }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.summary,
+    url: article.originalUrl,
+    datePublished: article.publishedAt,
+    publisher: { "@type": "Organization", name: article.source },
+  };
+
   return (
     <article className="rounded-xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md border border-[#E5E5E3]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <p className="text-base font-medium leading-relaxed text-[#1A1A1A]">
