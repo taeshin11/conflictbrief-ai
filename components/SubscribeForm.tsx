@@ -1,10 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 export default function SubscribeForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const { t } = useI18n();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -29,15 +31,15 @@ export default function SubscribeForm() {
       id="subscribe"
       className="rounded-xl bg-white p-8 shadow-sm border border-[#E5E5E3] text-center"
     >
-      <h3 className="text-xl font-semibold tracking-tight">Get the Daily Brief</h3>
+      <h3 className="text-xl font-semibold tracking-tight">{t("getTheDailyBrief")}</h3>
       <p className="mt-2 text-sm text-[#6B7280]">
-        Receive AI-summarized conflict news in your inbox every morning.
+        {t("subscribeDescription")}
       </p>
       <form onSubmit={handleSubmit} className="mx-auto mt-4 flex max-w-md gap-2">
         <input
           type="email"
           required
-          placeholder="you@example.com"
+          placeholder={t("emailPlaceholder")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="flex-1 rounded-lg border border-[#E5E5E3] bg-[#FAFAF8] px-4 py-2 text-sm outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
@@ -47,14 +49,14 @@ export default function SubscribeForm() {
           disabled={status === "loading"}
           className="rounded-lg bg-[#2563EB] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1D4ED8] disabled:opacity-60"
         >
-          {status === "loading" ? "…" : "Subscribe"}
+          {status === "loading" ? t("subscribing") : t("subscribe")}
         </button>
       </form>
       {status === "success" && (
-        <p className="mt-3 text-sm text-green-600">Subscribed! Check your inbox soon.</p>
+        <p className="mt-3 text-sm text-green-600">{t("subscribeSuccess")}</p>
       )}
       {status === "error" && (
-        <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
+        <p className="mt-3 text-sm text-red-600">{t("subscribeError")}</p>
       )}
     </section>
   );

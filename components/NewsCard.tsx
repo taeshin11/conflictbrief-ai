@@ -1,4 +1,7 @@
+"use client";
+
 import ShareButtons from "./ShareButtons";
+import { useI18n } from "@/lib/i18n";
 
 interface Article {
   id: string;
@@ -10,16 +13,18 @@ interface Article {
   region: string | null;
 }
 
-function timeAgo(dateStr: string): string {
-  const diff = Date.now() - new Date(dateStr).getTime();
-  const mins = Math.floor(diff / 60000);
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  return `${Math.floor(hrs / 24)}d ago`;
-}
-
 export default function NewsCard({ article }: { article: Article }) {
+  const { t } = useI18n();
+
+  function timeAgo(dateStr: string): string {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return t("minutesAgo", { n: mins });
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return t("hoursAgo", { n: hrs });
+    return t("daysAgo", { n: Math.floor(hrs / 24) });
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -66,7 +71,7 @@ export default function NewsCard({ article }: { article: Article }) {
           rel="noopener noreferrer"
           className="text-sm font-medium text-[#2563EB] transition-colors hover:text-[#1D4ED8]"
         >
-          Read Full Article &rarr;
+          {t("readFullArticle")} &rarr;
         </a>
         <ShareButtons url={article.originalUrl} title={article.title} summary={article.summary} />
       </div>

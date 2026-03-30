@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 export default function FeedbackWidget() {
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <>
       {/* Floating button — bottom-left, subtle */}
       <button
         onClick={() => setOpen(!open)}
-        aria-label="Send feedback or suggest improvements"
+        aria-label={t("suggestImprovement")}
         className="fixed bottom-4 left-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-lg transition-all hover:bg-[#1D4ED8] hover:scale-105"
       >
         {open ? (
@@ -27,10 +29,9 @@ export default function FeedbackWidget() {
       {/* Popup */}
       {open && (
         <div className="fixed bottom-16 left-4 z-50 w-80 rounded-xl bg-white p-5 shadow-xl border border-[#E5E5E3]">
-          <h4 className="text-sm font-semibold text-[#1A1A1A]">Suggest an Improvement</h4>
+          <h4 className="text-sm font-semibold text-[#1A1A1A]">{t("suggestImprovement")}</h4>
           <p className="mt-2 text-xs text-[#6B7280] leading-relaxed">
-            Found a bug? Want a new feature? Have feedback about the experience?
-            We read every message and respond within 48 hours.
+            {t("feedbackDescription")}
           </p>
 
           <div className="mt-4 space-y-2">
@@ -42,8 +43,8 @@ export default function FeedbackWidget() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
               <div>
-                <div className="font-medium">Suggest a Feature</div>
-                <div className="text-xs text-[#6B7280]">Request new functionality</div>
+                <div className="font-medium">{t("suggestFeature")}</div>
+                <div className="text-xs text-[#6B7280]">{t("requestNewFunctionality")}</div>
               </div>
             </a>
 
@@ -55,8 +56,8 @@ export default function FeedbackWidget() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               <div>
-                <div className="font-medium">Report a Bug</div>
-                <div className="text-xs text-[#6B7280]">Something not working right</div>
+                <div className="font-medium">{t("reportBug")}</div>
+                <div className="text-xs text-[#6B7280]">{t("somethingNotWorking")}</div>
               </div>
             </a>
 
@@ -68,8 +69,8 @@ export default function FeedbackWidget() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <div>
-                <div className="font-medium">General Feedback</div>
-                <div className="text-xs text-[#6B7280]">Share your thoughts</div>
+                <div className="font-medium">{t("generalFeedback")}</div>
+                <div className="text-xs text-[#6B7280]">{t("shareYourThoughts")}</div>
               </div>
             </a>
           </div>

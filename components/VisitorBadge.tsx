@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 export default function VisitorBadge() {
   const [counts, setCounts] = useState<{ today: number; total: number } | null>(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     fetch("/api/visitor", { method: "POST" })
@@ -16,7 +18,7 @@ export default function VisitorBadge() {
 
   return (
     <span className="text-xs text-gray-400">
-      👁 Today: {counts.today.toLocaleString()} · Total: {counts.total.toLocaleString()}
+      {t("today")}: {counts.today.toLocaleString()} · {t("total")}: {counts.total.toLocaleString()}
     </span>
   );
 }

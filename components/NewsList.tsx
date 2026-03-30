@@ -5,6 +5,8 @@ import NewsCard from "./NewsCard";
 import LoadingSkeleton from "./LoadingSkeleton";
 import ErrorState from "./ErrorState";
 import AdNative from "./AdNative";
+import { useI18n } from "@/lib/i18n";
+import type { TranslationStrings } from "@/lib/translations";
 
 interface Article {
   id: string;
@@ -22,16 +24,25 @@ interface NewsResponse {
   articles: Article[];
 }
 
-const REGIONS = ["All", "Ukraine", "Middle East", "Sudan", "Other"];
+const REGION_KEYS = ["all", "ukraine", "middleEast", "sudan", "other"] as const;
+const REGION_API_VALUES: Record<string, string> = {
+  all: "All",
+  ukraine: "Ukraine",
+  middleEast: "Middle East",
+  sudan: "Sudan",
+  other: "Other",
+};
+
 const AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutes
 
 export default function NewsList() {
   const [data, setData] = useState<NewsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [activeRegion, setActiveRegion] = useState("All");
+  const [activeRegion, setActiveRegion] = useState("all");
   const [refreshIn, setRefreshIn] = useState(AUTO_REFRESH_MS / 1000);
   const timerRef = useRef<ReturnType<typeof setInterval>>(undefined);
+  const { t } = useI18n();
 
   const fetchNews = useCallback((silent = false) => {
     if (!silent) {
@@ -72,18 +83,20 @@ export default function NewsList() {
     };
   }, [fetchNews]);
 
+  const apiRegion = REGION_API_VALUES[activeRegion];
   const filtered =
     data?.articles.filter(
-      (a) => activeRegion === "All" || a.region === activeRegion
+      (a) => activeRegion === "all" || a.region === apiRegion
     ) ?? [];
 
   const articleCount = filtered.length;
 
   function timeAgoShort(iso: string) {
     const mins = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
-    if (mins < 1) return "just now";
-    if (mins < 60) return `${mins}m ago`;
-    return `${Math.floor(mins / 60)}h ago`;
+    if (mins < 1) return t("justNow");
+    if (mins < 60) return t("minutesAgo", { n: mins });
+    const hrs = Math.floor(mins / 60);
+    return t("hoursAgo", { n: hrs });
   }
 
   function formatRefresh(secs: number) {
@@ -97,19 +110,21 @@ export default function NewsList() {
       {/* Header row */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight">Latest Conflict News</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">{t("latestConflictNews")}</h2>
           {data && (
             <p className="mt-1 text-sm text-[#6B7280]">
-              {articleCount} article{articleCount !== 1 ? "s" : ""}
-              {activeRegion !== "All" ? ` in ${activeRegion}` : ""}
+              {articleCount !== 1
+                ? t("articleCount", { count: articleCount })
+                : t("articleCountSingular", { count: articleCount })}
+              {activeRegion !== "all" ? ` ${t("inRegion", { region: t(activeRegion as keyof TranslationStrings) })}` : ""}
             </p>
           )}
         </div>
         {data && (
           <div className="flex items-center gap-3 text-sm text-[#6B7280]">
             <span>
-              Updated {timeAgoShort(data.lastUpdated)}
-              {data.stale && " (cached)"}
+              {t("updated", { time: timeAgoShort(data.lastUpdated) })}
+              {data.stale && ` ${t("cached")}`}
             </span>
             <span className="hidden sm:inline" title="Auto-refreshes every 5 minutes">
               <span className="inline-flex items-center gap-1 rounded-full bg-[#F0EEEB] px-2 py-0.5 text-xs">
@@ -125,7 +140,7 @@ export default function NewsList() {
 
       {/* Region filters */}
       <div className="flex flex-wrap gap-2">
-        {REGIONS.map((r) => (
+        {REGION_KEYS.map((r) => (
           <button
             key={r}
             onClick={() => setActiveRegion(r)}
@@ -135,7 +150,7 @@ export default function NewsList() {
                 : "bg-[#F0EEEB] text-[#6B7280] hover:bg-[#E5E5E3]"
             }`}
           >
-            {r}
+            {t(r as keyof TranslationStrings)}
           </button>
         ))}
       </div>
@@ -145,7 +160,9 @@ export default function NewsList() {
       {error && <ErrorState onRetry={() => fetchNews()} />}
       {!loading && !error && filtered.length === 0 && (
         <p className="text-center text-[#6B7280] py-12">
-          No articles found{activeRegion !== "All" ? ` for "${activeRegion}"` : ""}.
+          {activeRegion !== "all"
+            ? t("noArticlesForRegion", { region: t(activeRegion as keyof TranslationStrings) })
+            : t("noArticlesFound")}
         </p>
       )}
       {!loading && !error && (

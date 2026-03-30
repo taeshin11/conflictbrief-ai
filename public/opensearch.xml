@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>ConflictBrief AI</ShortName>
+  <Description>Search AI-powered war and conflict news summaries</Description>
+  <Url type="text/html" template="https://conflictbrief-ai.vercel.app/?q={searchTerms}"/>
+  <Image width="16" height="16" type="image/x-icon">https://conflictbrief-ai.vercel.app/favicon.ico</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Language>*</Language>
+</OpenSearchDescription>

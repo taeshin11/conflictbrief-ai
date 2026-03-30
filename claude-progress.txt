@@ -5,3 +5,31 @@
 [2026-03-29 14:08] Added demo data fallback so site shows content without API keys.
 [2026-03-29 14:08] Added JSON-LD WebSite structured data for SEO.
 [2026-03-29 14:10] All 12 features complete. Live site verified. QA passed.
+[2026-03-29] Traffic maximization improvements deployed:
+  - RSS feed (/feed.xml) for Google News, Feedly, and news aggregators
+  - Social sharing buttons (X, Facebook, LinkedIn, Reddit, Telegram, WhatsApp, copy link)
+  - FAQ page JSON-LD structured data for Google rich snippets
+  - PWA manifest + dynamic icons for app installability
+  - Improved feedback widget with categorized mailto options (feature, bug, general)
+  - Footer "Suggest an Improvement" email link (taeshinkim11@gmail.com)
+  - Auto-refresh every 5 minutes with countdown indicator
+  - Expanded SEO: max-image-preview, news_keywords, RSS alternate, Organization schema
+  - IndexNow API for Bing/Yandex instant indexing
+  - DNS prefetch + preconnect for performance
+  - robots.txt updated with targeted allow/disallow
+  - OG image subtitle fixed
+  Note: Vercel daily deploy limit reached (100/day). Latest IndexNow commit will deploy on next cycle.
+[2026-03-31] i18n + traffic maximization + site improvements:
+  - Full i18n system: 15 languages (EN, KO, JA, ZH, ES, FR, AR, DE, PT, RU, HI, TR, UK, VI, TH)
+  - Auto browser locale detection with localStorage persistence
+  - Language switcher in header (desktop + mobile)
+  - RTL support for Arabic
+  - All UI components translated (Header, Footer, NewsList, NewsCard, SubscribeForm, FeedbackWidget, etc.)
+  - Google News XML sitemap (/news-sitemap.xml)
+  - OpenSearch description for browser search integration
+  - Hreflang tags for all 15 languages
+  - Search engine ping API (/api/ping-search-engines)
+  - Enhanced robots.txt with Googlebot-News, bingbot, YandexBot rules
+  - BreadcrumbList structured data
+  - Multi-language keywords in metadata
+  - Broader font subsets (Cyrillic, Greek, Vietnamese)

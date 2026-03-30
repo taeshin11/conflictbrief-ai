@@ -2,13 +2,31 @@ User-agent: *
 Allow: /
 
 Sitemap: https://conflictbrief-ai.vercel.app/sitemap.xml
+Sitemap: https://conflictbrief-ai.vercel.app/news-sitemap.xml
 
 # Allow important content paths
 Allow: /about
 Allow: /how-to-use
 Allow: /feed.xml
 Allow: /api/news
+Allow: /news-sitemap.xml
 
 # Block internal API routes
 Disallow: /api/collect
 Disallow: /api/visitor
+Disallow: /api/indexnow
+
+# Google News bot
+User-agent: Googlebot-News
+Allow: /
+Allow: /news-sitemap.xml
+
+# Bing bot
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex bot
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
