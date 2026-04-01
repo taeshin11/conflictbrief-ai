@@ -16,7 +16,9 @@ export default function AdNative() {
   return (
     <div className="my-6" style={{ minHeight: 100 }}>
       <Script
-        src={`//www.highperformanceformat.com/${siteKey}/invoke.js`}
+        async
+        data-cfasync="false"
+        src={`//pl29036482.profitablecpmratenetwork.com/${siteKey}/invoke.js`}
         strategy="afterInteractive"
       />
       <div id={`container-${siteKey}`} />

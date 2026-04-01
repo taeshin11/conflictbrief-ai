@@ -9,7 +9,7 @@ export default function AdSocialBar() {
 
   return (
     <Script
-      src={`//www.highperformanceformat.com/${siteKey}/invoke.js`}
+      src={`//pl29036483.profitablecpmratenetwork.com/76/7d/66/${siteKey}.js`}
       strategy="afterInteractive"
     />
   );
