@@ -27,7 +27,7 @@ export default function TermsPage() {
           <h1 className="text-3xl font-semibold tracking-tight text-[#1A1A1A] sm:text-4xl">
             Terms of Service
           </h1>
-          <p className="mt-2 text-sm text-[#6B7280]">Last updated: March 29, 2026</p>
+          <p className="mt-2 text-sm text-[#6B7280]">Last updated: March 29, 2025</p>
 
           <section className="mt-8 space-y-6 text-[#1A1A1A] leading-relaxed">
             <p>

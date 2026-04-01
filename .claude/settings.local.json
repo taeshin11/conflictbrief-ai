@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm run:*)",
-      "Bash(gcloud services:*)"
+      "Bash(gcloud services:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:conflictbrief-ai.vercel.app)"
     ]
   }
 }

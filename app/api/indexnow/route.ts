@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const SITE_URL = "https://conflictbrief-ai.vercel.app";
-const KEY = "conflictbriefai2026";
+const KEY = "conflictbriefai2025";
 
 // GET serves the key file for verification
 export async function GET() {
